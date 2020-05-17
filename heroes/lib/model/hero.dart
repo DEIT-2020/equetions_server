@@ -9,3 +9,34 @@ class _Hero {
   @Column(unique: true)
   String name;
 }
+
+class user{//用户表
+  @primaryKey
+  int useraccout;//用户账号
+
+  @Column(unique: true)
+  String userpassword;//用户密码
+}
+
+class userrecord{//用户、记录对应表
+  @primaryKey
+  int useraccout;//用户账号
+
+  @Column(unique: true)
+  String recordid;
+}
+
+class  record{ //一次闯关记录
+  @primaryKey
+  int recordid;//记录编号
+
+  @Column(unique: true)
+  String length;//用时
+
+  @Column(unique: true)
+  String accuracy;//正确率
+  
+  @Column(unique: true)
+  String stoppingmode;//本次闯关结束的模式
+
+}
