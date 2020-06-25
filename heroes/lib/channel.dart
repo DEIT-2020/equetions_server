@@ -38,16 +38,24 @@ class HeroesChannel extends ApplicationChannel {
   @override
   Controller get entryPoint {
     final router = Router();
-
     // Prefer to use `link` instead of `linkFunction`.
     // See: https://aqueduct.io/docs/http/request_controller/
-    router
-      .route("/example")
+    router//首页
+      .route("/homepage")
       .linkFunction((request) async {
-        return Response.ok({"key": "value"});
+        
       });
-     router
-      .route('/heroes')
+    router//普通计算器
+      .route('/calculator')
+      .link(() => HeroesController(context));
+    router//闯关
+      .route('/adventure')
+      .link(() => HeroesController(context));
+    router//24点
+      .route('/twentyfour')
+      .link(() => HeroesController(context));
+    router//个人中心
+      .route('/self')
       .link(() => HeroesController(context));
     return router;
   }
