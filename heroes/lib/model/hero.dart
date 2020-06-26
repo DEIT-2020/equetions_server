@@ -10,7 +10,7 @@ class _Hero {
   String name;
 }
 
-class user{//用户表
+class _user {//用户表
   @primaryKey
   int useraccout;//用户账号
 
@@ -18,7 +18,7 @@ class user{//用户表
   String userpassword;//用户密码
 }
 
-class userrecord{//用户、记录对应表
+class _userrecord{//用户、记录对应表
   @primaryKey
   int useraccount;//用户账号
 
@@ -26,7 +26,7 @@ class userrecord{//用户、记录对应表
   String recordid;
 }
 
-class  record{ //一次闯关记录
+class  _record{ //一次闯关记录
   @primaryKey
   int recordid;//记录编号
 
