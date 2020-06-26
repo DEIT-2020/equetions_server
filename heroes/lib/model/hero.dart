@@ -20,7 +20,7 @@ class user{//用户表
 
 class userrecord{//用户、记录对应表
   @primaryKey
-  int useraccout;//用户账号
+  int useraccount;//用户账号
 
   @Column(unique: true)
   String recordid;
