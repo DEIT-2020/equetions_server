@@ -1,3 +1,5 @@
+import 'package:heroes/model/hero.dart';
+
 import 'heroes.dart';
 import 'controller/heroes_controller.dart';
 import 'controller/InputCon.dart';

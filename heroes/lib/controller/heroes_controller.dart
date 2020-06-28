@@ -38,7 +38,7 @@ class HeroesController extends ResourceController {
     final query = Query<Hero>(context)..values = hero;
 
     final insertedHero = await query.insert();
-
     return Response.ok(insertedHero);
   }
 }
+

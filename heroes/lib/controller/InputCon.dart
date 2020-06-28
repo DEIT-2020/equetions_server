@@ -4,10 +4,27 @@ import 'package:heroes/model/hero.dart';
 class InputCon extends ResourceController{
     final ManagedContext context; 
     InputCon(this.context);
+    /*
+    Future<Response> createQuestion(
+      @Bind.body(ignore: ["questionId"]) Question inputQuestion) async {
+    final query = Query<Question>(context)..values = inputQuestion;
+
+    final insertedQuestion = await query.insert();
+
+    return Response.ok(insertedQuestion);
+    
+    */
     @Operation.post()
-    Future<Response> insert_data(@Bind.body() Questions ques) async {
-    var rs=await context.insertObject<Questions>(ques);
+  Future<Response> insert_data(@Bind.body(ignore: ['tid'])Questions questions) async {
+    var query=Query<Questions>(context)..values=questions;
+    var rs=await query.insert();
     return Response.ok(rs);
   }
-
+  @Operation.get()
+  Future<Response> get_data() async {
+    var query=Query<Questions>(context);
+    List<Questions> rs=await query.fetch();
+    return Response.ok({"rs":rs,"size":rs.length});
+  }
+ 
 }

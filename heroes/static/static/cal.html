@@ -105,6 +105,9 @@
     var int;
 	var exp;
 	var ans;
+    var simple;
+    var midlle;
+    var difficult;
     var millisecond=0;//毫秒
 	$.ajax({
 	url:"/input",
@@ -115,12 +118,29 @@
 	success:function(data){alert(data);}
     });
     $.ajax({
-    url:"/getAnswer",
+    url:"/input",
     type:"get",
 	success:function(data){
-       //{simple:[],midlle:[],simele_len
+       let type=document.getElementById("select").value;
+       var si=0,mi=0,di=0;
+      simple=new Array();
+      midlle=new Array();
+      difficult=new Array();
+      for(var i=0;i<data.size;i++){
+          if(data.rs[i].type==="simple"){
+                simple[si]=data.rs[i];
+                si++;
+          }else if(data.rs[i].type==="middle"){
+              midlle[mi]=data.rs[i];
+              mi++;
+          }else{
+              difficult[di]=data.rs[i];
+              di++;
+          }
+      }
     }
 	});
+    
     function Reset()//暂停
     {
       window.clearInterval(int);

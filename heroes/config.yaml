@@ -1,6 +1,6 @@
 database:
-  host: 13.115.53.84
-  port: 5432
-  username: iflyup
-  password: 729at3663
-  databaseName: equations
+      host: 13.115.53.84
+      port: 5432
+      username: iflyup
+      password: 729at3663
+      databaseName: equations    
