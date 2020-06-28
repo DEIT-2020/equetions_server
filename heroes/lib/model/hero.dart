@@ -61,7 +61,7 @@ class  q_a{ //题库
 //1+1
 
 
-
+//adfadsg
 class  game{ //个人中心的闯关记录
   @primaryKey
   String name;//用户名
