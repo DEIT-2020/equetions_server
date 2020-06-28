@@ -1,6 +1,6 @@
 import 'heroes.dart';
 import 'controller/heroes_controller.dart';
-
+import 'controller/InputCon.dart';
 /// This type initializes an application.
 ///
 /// Override methods in this class to set up routes and initialize services like
@@ -40,19 +40,24 @@ class HeroesChannel extends ApplicationChannel {
     final router = Router();
     // Prefer to use `link` instead of `linkFunction`.
     // See: https://aqueduct.io/docs/http/request_controller/
+
+
     router//首页
-      .route("/homepage")
+      .route("/index")
       .linkFunction((request) async {
-        
+        return Response.ok("Hello world");
       });
+      router.route("/static/*").link(()=>FileController("static/static"));
+
+      router.route("/input").link(()=>InputCon(context));
     router//普通计算器
       .route('/calculator')
       .link(() => HeroesController(context));
-    router//闯关
-      .route('/adventure')
+    router//练习模式
+      .route('/practice')
       .link(() => HeroesController(context));
-    router//24点
-      .route('/twentyfour')
+    router//首页
+      .route('/homePage')
       .link(() => HeroesController(context));
     router//个人中心
       .route('/self')
