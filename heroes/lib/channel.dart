@@ -45,15 +45,6 @@ class HeroesChannel extends ApplicationChannel {
       .linkFunction((request) async {
         
       });
-<<<<<<< Updated upstream
-=======
-    router
-      .route("/example")
-      .linkFunction((request) async {
-      return new Response.ok({"key": "value"});
-    });
-    
->>>>>>> Stashed changes
     router//普通计算器
       .route('/calculator')
       .link(() => HeroesController(context));

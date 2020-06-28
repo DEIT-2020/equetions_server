@@ -47,7 +47,6 @@ class Questions extends ManagedObject<q_a> implements q_a {
 class  q_a{ //题库
   @primaryKey
   String tid;//题目编号
-<<<<<<< Updated upstream
 
   @Column(unique: true)
   String question;//题目
@@ -56,16 +55,6 @@ class  q_a{ //题库
   String type;//类型
 
   @Column(unique: true)
-=======
-
-  @Column(unique: true)
-  String question;//题目
-
-  @Column(unique: true)
-  String type;//类型
-
-  @Column(unique: true)
->>>>>>> Stashed changes
   String answer;//答案
   
 }
@@ -77,7 +66,6 @@ class  game{ //个人中心的闯关记录
   @primaryKey
   String name;//用户名
 
-<<<<<<< Updated upstream
   @Column(unique: true)
   String gtime;//用时
 
@@ -87,9 +75,5 @@ class  game{ //个人中心的闯关记录
   @Column(unique: true)
   String tnumber;//题数
   
-=======
-  @Column(unique: true)
-  String gtime;//用时
->>>>>>> Stashed changes
 
 }
