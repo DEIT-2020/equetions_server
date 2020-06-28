@@ -42,3 +42,4 @@ class HeroesController extends ResourceController {
     return Response.ok(insertedHero);
   }
 }
+
