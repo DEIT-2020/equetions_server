@@ -1,5 +1,4 @@
 import 'package:heroes/heroes.dart';
-import 'package:redstone/redstone.dart' as web;
 
 Future main() async {
   final app = Application<HeroesChannel>()

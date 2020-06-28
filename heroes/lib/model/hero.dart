@@ -9,7 +9,6 @@ class _Hero {
   @Column(unique: true)
   String name;
 }
-
 class _user {//用户表
   @primaryKey
   int useraccout;//用户账号
