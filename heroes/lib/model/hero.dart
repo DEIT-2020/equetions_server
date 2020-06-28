@@ -2,7 +2,8 @@ import 'package:heroes/heroes.dart';
 
 class Hero extends ManagedObject<_Hero> implements _Hero {}
 
-class _Hero {
+
+class _Hero { 
   @primaryKey
   int id;
 
@@ -10,33 +11,69 @@ class _Hero {
   String name;
 }
 
-class _user {//用户表
+
+
+class Login extends ManagedObject<login> implements login {}
+class login {//用户表
   @primaryKey
-  int useraccout;//用户账号
+  String name;//用户账号
 
   @Column(unique: true)
-  String userpassword;//用户密码
+  String password;//用户密码
 }
 
-class _userrecord{//用户、记录对应表
+class Practice extends ManagedObject<practice> implements practice {}
+
+class  practice{ //个人中心的练习记录
   @primaryKey
-  int useraccout;//用户账号
+  String name;//用户名
 
   @Column(unique: true)
-  String recordid;
-}
-
-class  _record{ //一次闯关记录
-  @primaryKey
-  int recordid;//记录编号
+  String ptime;//用时
 
   @Column(unique: true)
-  String length;//用时
+  String type;//类型
 
   @Column(unique: true)
-  String accuracy;//正确率
+  String rapid;//速度
   
   @Column(unique: true)
-  String stoppingmode;//本次闯关结束的模式
+  String pnumber;//总计题数
+
+}
+class Questions extends ManagedObject<q_a> implements q_a {
+  
+}
+class  q_a{ //题库
+  @primaryKey
+  String tid;//题目编号
+
+  @Column(unique: true)
+  String question;//题目
+
+  @Column(unique: true)
+  String type;//类型
+
+  @Column(unique: true)
+  String answer;//答案
+  
+}
+//1+1
+
+
+
+class  game{ //个人中心的闯关记录
+  @primaryKey
+  String name;//用户名
+
+  @Column(unique: true)
+  String gtime;//用时
+
+  @Column(unique: true)
+  String gnumber;//闯关次数
+
+  @Column(unique: true)
+  String tnumber;//题数
+  
 
 }
