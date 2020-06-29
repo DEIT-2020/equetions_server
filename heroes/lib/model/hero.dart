@@ -26,7 +26,7 @@ class Practice extends ManagedObject<practice> implements practice {}
 
 class  practice{ //个人中心的练习记录
   @primaryKey
-  String name;//用户名
+  int useraccount;//用户账号
 
   @Column(unique: true)
   String ptime;//用时
