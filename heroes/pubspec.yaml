@@ -8,10 +8,6 @@ environment:
 
 dependencies:
   aqueduct: 3.3.0+1
-<<<<<<< Updated upstream
-  redstone: any
-=======
->>>>>>> Stashed changes
 
 dev_dependencies:
   test: ^1.0.0

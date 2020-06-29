@@ -1,6 +1,8 @@
 import 'heroes.dart';
 import 'controller/heroes_controller.dart';
-
+import 'package:aqueduct/managed_auth.dart';
+import 'package:heroes/model/userlogin.dart';
+/*import 'package:heroes/model/question.dart';*/
 /// This type initializes an application.
 ///
 /// Override methods in this class to set up routes and initialize services like
@@ -13,6 +15,7 @@ class HeroesChannel extends ApplicationChannel {
   ///
   /// This method is invoked prior to [entryPoint] being accessed.
  ManagedContext context;
+ AuthServer authServer;
   @override
   Future prepare() async {
     logger.onRecord.listen((rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
@@ -25,8 +28,8 @@ class HeroesChannel extends ApplicationChannel {
       config.database.port,
       config.database.databaseName);
 
-
     context = ManagedContext(dataModel, persistentStore);
+
   }
 
   /// Construct the request channel.
@@ -45,6 +48,8 @@ class HeroesChannel extends ApplicationChannel {
       .linkFunction((request) async {
         
       });
+    router.route('/auth/token').link(() => AuthController(authServer));
+
     router//普通计算器
       .route('/calculator')
       .link(() => HeroesController(context));
