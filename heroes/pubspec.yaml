@@ -8,9 +8,16 @@ environment:
 
 dependencies:
   aqueduct: 3.3.0+1
+<<<<<<< HEAD
   browser: "^0.10.0+2"
   redstone: "^0.6.8"
 
+=======
+<<<<<<< Updated upstream
+  redstone: any
+=======
+>>>>>>> Stashed changes
+>>>>>>> 10184500416
 
 dev_dependencies:
   test: ^1.0.0

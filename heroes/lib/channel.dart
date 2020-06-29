@@ -12,13 +12,13 @@ class HeroesChannel extends ApplicationChannel {
   /// and any other initialization required before constructing [entryPoint].
   ///
   /// This method is invoked prior to [entryPoint] being accessed.
- ManagedContext context;
+  ManagedContext context;
   @override
   Future prepare() async {
     logger.onRecord.listen((rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
     final config = HeroConfig(options.configurationFilePath);
     final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
-     final persistentStore = PostgreSQLPersistentStore.fromConnectionInfo(
+    final persistentStore = PostgreSQLPersistentStore.fromConnectionInfo(
       config.database.username,
       config.database.password,
       config.database.host,
@@ -45,6 +45,12 @@ class HeroesChannel extends ApplicationChannel {
       .linkFunction((request) async {
         
       });
+    /*router
+      .route("/example")
+      .linkFunction((request) async {
+      return new Response.ok({"key": "value"});
+    });*/
+    
     router//普通计算器
       .route('/calculator')
       .link(() => HeroesController(context));
