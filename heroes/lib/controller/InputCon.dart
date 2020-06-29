@@ -21,7 +21,7 @@ class InputCon extends ResourceController{
     return Response.ok(rs);
   }
  /* @Operation.get()
- Future<Response> get_data() async {
+  Future<Response> get_data() async {
     var query=Query<Questions>(context);
     List<Questions> rs=await query.fetch();
     return Response.ok({"rs":rs,"size":rs.length});

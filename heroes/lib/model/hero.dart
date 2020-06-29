@@ -1,5 +1,5 @@
 import 'package:heroes/heroes.dart';
-
+/*
 class Hero extends ManagedObject<_Hero> implements _Hero {}
 
 
@@ -11,11 +11,12 @@ class _Hero {
   String name;
 }
 
-
-
-class Login extends ManagedObject<login> implements login {}
-class login {//用户表
+*/
+class Login extends ManagedObject<userlogin> implements userlogin {}
+class userlogin {//用户表
   @primaryKey
+  int loginid;
+  @Column(unique: true)
   String name;//用户账号
 
   @Column(unique: true)
@@ -25,8 +26,10 @@ class login {//用户表
 class Practice extends ManagedObject<practice> implements practice {}
 
 class  practice{ //个人中心的练习记录
-  @primaryKey
-  int useraccount;//用户账号
+@primaryKey
+int pid;
+  @Column(unique: true)
+  String name;//用户名
 
   @Column(unique: true)
   String ptime;//用时
@@ -46,7 +49,7 @@ class Questions extends ManagedObject<q_a> implements q_a {
 }
 class  q_a{ //题库
   @primaryKey
-  String tid;//题目编号
+  int tid;//题目编号
 
   @Column(unique: true)
   String question;//题目
@@ -61,9 +64,11 @@ class  q_a{ //题库
 //1+1
 
 
-//adfadsg
+
 class  game{ //个人中心的闯关记录
   @primaryKey
+  int gameid;
+  @Column(unique:true )
   String name;//用户名
 
   @Column(unique: true)

@@ -1,25 +1,25 @@
 import 'package:aqueduct/aqueduct.dart';
 import 'package:heroes/heroes.dart';
-import 'package:heroes/model/userlogin.dart';
-import 'package:heroes/model/result.dart';
+import 'package:heroes/model/hero.dart';
 import 'package:http/http.dart' as http;
+import 'package:heroes/model/result.dart';
 import 'package:http/src/response.dart' as res;
 import 'dart:convert';
 
-class ManagerController extends ResourceController {
+class LoginController extends ResourceController {
 
-  ManagerController(this.context);
+  LoginController(this.context);
 
   final ManagedContext context;
 
   @Operation.post()
- Future<Response> login(@Bind.body() User a) async {
+ Future<Response> login(@Bind.body() Login login) async {
     String msg = "登录异常";
     //查询数据库是否存在这个用户
-    var query = Query<User>(context)
+    var query = Query<Login>(context)
 
-      ..where((u) => u.name).equalTo(a.name);
-    User result = await query.fetchOne();
+      ..where((u) => u.loginid).equalTo(login.loginid);
+    Login result = await query.fetchOne();
 
     if (result == null) {
       msg = "用户不存在";
@@ -28,7 +28,7 @@ class ManagerController extends ResourceController {
       var clientId = "com.donggua.chat";
       var clientSecret = "dongguasecret";
       var body =
-          "managerName=${a.nickname}&password=${a.password}&grant_type=password";
+          "name=${login.name}&password=${login.password}&grant_type=password";
       var clientCredentials =
           Base64Encoder().convert("$clientId:$clientSecret".codeUnits);
 
@@ -48,9 +48,9 @@ class ManagerController extends ResourceController {
             code: 1,
             msg: "登录成功",
             data: {
-              'name': result.name,
+              'managerId': result.loginid,
               'access_token': map['access_token'],
-              'nickname': result.nickname
+              'managerName': result.name
             },
           ),
         );

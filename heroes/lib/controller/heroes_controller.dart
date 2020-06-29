@@ -9,7 +9,7 @@ class HeroesController extends ResourceController {
 
   @Operation.get()
   Future<Response> getAllHeroes({@Bind.query('name') String name}) async {
-    final heroQuery = Query<Hero>(context);
+    final heroQuery = Query<Login>(context);
     if (name != null) {
       heroQuery.where((h) => h.name).contains(name, caseSensitive: false);
   }
@@ -20,8 +20,8 @@ class HeroesController extends ResourceController {
 
   @Operation.get('id')
   Future<Response> getHeroByID(@Bind.path('id') int id) async {
-    final heroQuery = Query<Hero>(context)
-      ..where((h) => h.id).equalTo(id);    
+    final heroQuery = Query<Login>(context)
+      ..where((h) => h.loginid).equalTo(id);    
 
     final hero = await heroQuery.fetchOne();
 
@@ -33,12 +33,11 @@ class HeroesController extends ResourceController {
 
   @Operation.post()
   Future<Response> createHero() async {
-    final hero = Hero()
+    final hero = Login()
       ..read(await request.body.decode(), ignore: ["id"]);
-    final query = Query<Hero>(context)..values = hero;
+    final query = Query<Login>(context)..values = hero;
 
     final insertedHero = await query.insert();
-
     return Response.ok(insertedHero);
   }
 }
